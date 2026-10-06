@@ -11,3 +11,6 @@ flask>=3.0
 # Production WSGI server, used when deployed (see render.yaml / Procfile).
 # Not needed to run locally - webapp/app.py serves itself there.
 gunicorn>=23.0; sys_platform != 'win32'
+
+# Hugging Face Space front end (app.py). Not needed to run locally.
+gradio>=4.44

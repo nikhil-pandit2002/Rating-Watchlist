@@ -3,8 +3,8 @@ title: Rating Watchlist
 emoji: "📊"
 colorFrom: green
 colorTo: gray
-sdk: docker
-app_port: 7860
+sdk: gradio
+app_file: app.py
 pinned: false
 license: mit
 short_description: Latest credit ratings for 36 infrastructure borrowers from 7 rating agencies
