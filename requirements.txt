@@ -14,3 +14,5 @@ gunicorn>=23.0; sys_platform != 'win32'
 
 # Hugging Face Space front end (app.py). Not needed to run locally.
 gradio>=4.44
+# Required by ZeroGPU hardware to detect a GPU function at startup.
+spaces>=0.30
