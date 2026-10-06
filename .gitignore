@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Large or regenerable - keep the repo small and clonable
+# wheels/ is a 70 MB offline install bundle for an air-gapped Windows laptop.
+# A cloud host installs from PyPI instead, so it has no place in the repo.
+# Rebuild it when needed with:
+#   pip download -r requirements-lock.txt -d wheels --only-binary=:all: \
+#       --platform win_amd64 --python-version 313
+wheels/
+
+# Cached HTTP responses and past run outputs - both regenerate themselves
+data/cache/
+data/runs/
+data/*.db-shm
+data/*.db-wal
+
+# Local tooling
+.claude/
+*.log
+
+# NOTE: data/entities.db, data/resolutions.db and output/watchlist_final.xlsx
+# ARE committed on purpose. They carry the 36-entity watchlist and a completed
+# run, so a fresh clone - or a cloud deploy with an ephemeral disk - starts with
+# real content instead of an empty page.
+
+# Interview-prep notes - kept local, not published
+EXTRACTION_SHEET.md

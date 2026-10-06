@@ -1,0 +1,21 @@
+# Render deployment (https://render.com) - free tier.
+#
+# One worker, not the default several. A collection run is held in memory by
+# JobManager on the process that started it, so a second worker would answer the
+# progress poll with "no such job" roughly half the time. Threads inside the one
+# worker carry the actual concurrency: the pipeline already runs one thread per
+# agency.
+#
+# The timeout is long because a full 36-entity run is 252 HTTP lookups against
+# seven external sites; Gunicorn's 30-second default would kill the request that
+# starts it.
+services:
+  - type: web
+    name: rating-watchlist
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --chdir webapp app:app --workers 1 --threads 8 --timeout 600
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.13.4"

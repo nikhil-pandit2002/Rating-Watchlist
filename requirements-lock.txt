@@ -1,0 +1,21 @@
+# Exact versions installed by the offline bundle in wheels/.
+#
+# requirements.txt uses '>=' and lets pip take the newest, which is fine on a
+# machine that can reach PyPI and be re-tested. This file is the opposite: it
+# pins what is known to work, so an offline install cannot quietly land a major
+# upgrade. Left unpinned, pip resolved pandas>=2.2 to pandas 3.0 - a major
+# version ahead of the 2.2 series everything here was checked on.
+#
+# Built for Python 3.13 on 64-bit Windows. Two pins are one step above the
+# versions originally tested on Python 3.11, because neither publishes a 3.13
+# build: lxml stops at 5.1.0 until 5.3.0, and pandas until 2.2.3 (a bugfix
+# release of 2.2.2). Both stay inside the same series.
+requests==2.31.0
+beautifulsoup4==4.12.3
+lxml==5.3.0
+pandas==2.2.3
+openpyxl==3.1.5
+pdfplumber==0.11.0
+pymupdf==1.28.0
+rapidfuzz==3.14.3
+flask==3.1.2

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rating Watchlist</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="mark"></span>
+      <div>
+        <h1>Rating Watchlist</h1>
+        <p class="sub">Latest ratings from 7 agencies &middot; 15-month window</p>
+      </div>
+    </div>
+    <button id="run" class="primary">
+      <span class="run-label">Get Ratings</span>
+      <span class="count" id="run-count"></span>
+    </button>
+  </header>
+
+  <main>
+    <!-- add ------------------------------------------------------------ -->
+    <section class="card add">
+      <form id="add-form" autocomplete="off">
+        <input id="add-name" type="text" placeholder="Add an entity by name…"
+               aria-label="Entity name" spellcheck="false">
+        <button type="submit" class="ghost">Add</button>
+      </form>
+      <div class="upload">
+        <label for="file" class="link">Upload a list</label>
+        <input id="file" type="file" accept=".xlsx,.xls,.csv,.txt" hidden>
+        <span class="dot">&middot;</span>
+        <a class="link" href="/api/template">Download template</a>
+        <span class="hint">Name column only</span>
+      </div>
+    </section>
+
+    <div id="flash" class="flash" hidden></div>
+
+    <!-- progress -------------------------------------------------------- -->
+    <section id="progress" class="card progress" hidden>
+      <div class="bar"><div id="bar-fill"></div></div>
+      <div class="progress-meta">
+        <span id="progress-label">Starting…</span>
+        <span id="progress-pct">0%</span>
+      </div>
+    </section>
+
+    <!-- result ---------------------------------------------------------- -->
+    <section id="result" class="card result" hidden>
+      <div class="result-head">
+        <div>
+          <strong id="result-title">Done</strong>
+          <p id="result-sub" class="sub"></p>
+        </div>
+        <a id="download" class="primary small" href="#">Download Excel</a>
+      </div>
+      <div id="result-stats" class="stats"></div>
+    </section>
+
+    <!-- list ------------------------------------------------------------ -->
+    <section class="card list">
+      <div class="list-head">
+        <label class="check">
+          <input type="checkbox" id="select-all" checked>
+          <span id="list-title">Entities</span>
+        </label>
+        <input id="filter" type="search" placeholder="Filter…" aria-label="Filter entities">
+      </div>
+      <ul id="entities" class="entities"></ul>
+      <p id="empty" class="empty" hidden>Nothing here yet — add an entity above.</p>
+    </section>
+    <footer class="credit">Developed by Nikhil Pandit</footer>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
