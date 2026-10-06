@@ -7,7 +7,7 @@ sdk: gradio
 app_file: app.py
 pinned: false
 license: mit
-short_description: Latest credit ratings for 36 infrastructure borrowers from 7 rating agencies
+short_description: Credit ratings from 7 agencies, NaBFID flagged
 ---
 
 > **Running here as a live demo.** The instructions below describe installing it
