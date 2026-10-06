@@ -16,6 +16,10 @@ wheels/
 # Cached HTTP responses and past run outputs - both regenerate themselves
 data/cache/
 data/runs/
+# resolutions.db is rebuilt from data/resolutions_seed.json on first run.
+# A SQLite file is opaque in review and Hugging Face rejects binaries of that
+# size on push, so the confirmed identities are committed as text instead.
+data/resolutions.db
 data/*.db-shm
 data/*.db-wal
 

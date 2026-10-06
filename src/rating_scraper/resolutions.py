@@ -12,6 +12,8 @@ different SPVs and silently resolved to the wrong one.
 """
 from __future__ import annotations
 
+import json
+import logging
 import re
 import sqlite3
 import threading
@@ -20,6 +22,8 @@ from pathlib import Path
 from typing import Optional
 
 from .normalize import canonical_name
+
+log = logging.getLogger(__name__)
 
 # Key prefix for borrowers held without a CIN.
 NAME_PREFIX = "NAME:"
@@ -98,6 +102,49 @@ class ResolutionStore:
             """
         )
         self.conn.commit()
+        self._seed_if_empty()
+
+    def _seed_if_empty(self) -> None:
+        """Load human-confirmed identities from the committed JSON seed.
+
+        The database itself is not committed: a SQLite file is opaque in review,
+        and Hugging Face rejects binaries of that size on push. The seed carries
+        only the decisions a person made - the cached 'auto' rows are machine
+        guesses that regenerate on the next run - so a fresh clone or a cloud
+        deploy with an empty disk starts with the confirmations intact rather
+        than re-asking questions someone already answered.
+        """
+        if self.conn.execute("SELECT 1 FROM resolutions LIMIT 1").fetchone():
+            return
+        seed = self.path.parent / "resolutions_seed.json"
+        if not seed.exists():
+            return
+        try:
+            data = json.loads(seed.read_text(encoding="utf-8"))
+        except Exception as e:  # a malformed seed must not stop the app starting
+            log.warning("resolutions seed unreadable (%s); starting empty", e)
+            return
+
+        now = time.time()
+        for r in data.get("resolutions", []):
+            self.conn.execute(
+                "INSERT OR IGNORE INTO resolutions "
+                "(cin, agency, entity_name, borrower_name, confirmed_by, updated_at) "
+                "VALUES (?, ?, ?, ?, ?, ?)",
+                (r.get("cin", ""), r.get("agency", ""), r.get("entity_name", ""),
+                 r.get("borrower_name", ""), r.get("confirmed_by", "user"), now),
+            )
+        for p in data.get("url_pins", []):
+            self.conn.execute(
+                "INSERT OR IGNORE INTO url_pins "
+                "(cin, agency, url, borrower_name, note, updated_at) "
+                "VALUES (?, ?, ?, ?, ?, ?)",
+                (p.get("cin", ""), p.get("agency", ""), p.get("url", ""),
+                 p.get("borrower_name", ""), p.get("note", ""), now),
+            )
+        self.conn.commit()
+        log.info("seeded %d confirmed resolution(s) from %s",
+                 len(data.get("resolutions", [])), seed.name)
 
     # -- document URL pins ----------------------------------------------
     def set_url(self, cin: str, agency: str, url: str,

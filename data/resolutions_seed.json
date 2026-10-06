@@ -1,0 +1,91 @@
+{
+ "_comment": "Seed for data/resolutions.db, which is not committed. A SQLite file is opaque in review and Hugging Face rejects binaries of that size on push. ResolutionStore loads this on first run when the table is empty.",
+ "_scope": "Human-confirmed identities only. The ~620 'auto' rows the tool caches are machine guesses that regenerate on the next run; these 12 are decisions a person made and nothing can reproduce them.",
+ "resolutions": [
+  {
+   "cin": "L40100GJ1996PLC030533",
+   "agency": "Brickwork Ratings",
+   "entity_name": "Adani Power Ltd.",
+   "borrower_name": "Adani Power Limited",
+   "confirmed_by": "user"
+  },
+  {
+   "cin": "L40100GJ1996PLC030533",
+   "agency": "CARE Ratings",
+   "entity_name": "Adani Power Limited",
+   "borrower_name": "Adani Power Limited",
+   "confirmed_by": "user"
+  },
+  {
+   "cin": "L40100GJ1996PLC030533",
+   "agency": "CRISIL Ratings",
+   "entity_name": "Adani Power Limited",
+   "borrower_name": "Adani Power Limited",
+   "confirmed_by": "user"
+  },
+  {
+   "cin": "L40100GJ1996PLC030533",
+   "agency": "ICRA",
+   "entity_name": "Adani Power Limited",
+   "borrower_name": "Adani Power Limited",
+   "confirmed_by": "user"
+  },
+  {
+   "cin": "L40100GJ1996PLC030533",
+   "agency": "India Ratings",
+   "entity_name": "Adani Power Limited",
+   "borrower_name": "Adani Power Limited",
+   "confirmed_by": "user"
+  },
+  {
+   "cin": "NAME:msrdcpuneringroadwestern",
+   "agency": "Acuite Ratings",
+   "entity_name": "MSRDC PUNE RING ROAD LIMITED",
+   "borrower_name": "MSRDC Pune Ring Road Western Limited",
+   "confirmed_by": "user"
+  },
+  {
+   "cin": "U72900MH2005PTC153896",
+   "agency": "ICRA",
+   "entity_name": "NTT Global Data Centers & Cloud Infrastructure India Private Limited",
+   "borrower_name": "NTT Global Data Center",
+   "confirmed_by": "user"
+  },
+  {
+   "cin": "NAME:nttglobaldatacenter",
+   "agency": "ICRA",
+   "entity_name": "NTT Global Data Centers & Cloud Infrastructure India Private Limited",
+   "borrower_name": "NTT Global Data Center",
+   "confirmed_by": "user"
+  },
+  {
+   "cin": "L13209MH1965PLC291394",
+   "agency": "CRISIL Ratings",
+   "entity_name": "Vedanta Limited",
+   "borrower_name": "Vedanta Limited",
+   "confirmed_by": "user"
+  },
+  {
+   "cin": "L66010KA1990PLC011409",
+   "agency": "CARE Ratings",
+   "entity_name": "Aadhar Housing Finance Limited",
+   "borrower_name": "aadhar housing finance limited",
+   "confirmed_by": "user"
+  },
+  {
+   "cin": "L66010KA1990PLC011409",
+   "agency": "ICRA",
+   "entity_name": "AADHAR HOUSING FINANCE LIMITED",
+   "borrower_name": "aadhar housing finance limited",
+   "confirmed_by": "user"
+  },
+  {
+   "cin": "L66010KA1990PLC011409",
+   "agency": "India Ratings",
+   "entity_name": "Aadhar Housing Finance Limited",
+   "borrower_name": "aadhar housing finance limited",
+   "confirmed_by": "user"
+  }
+ ],
+ "url_pins": []
+}
