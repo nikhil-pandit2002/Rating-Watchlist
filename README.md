@@ -1,3 +1,21 @@
+---
+title: Rating Watchlist
+emoji: "📊"
+colorFrom: green
+colorTo: gray
+sdk: docker
+app_port: 7860
+pinned: false
+license: mit
+short_description: Latest credit ratings for 36 infrastructure borrowers from 7 rating agencies
+---
+
+> **Running here as a live demo.** The instructions below describe installing it
+> on a Windows machine; on this Space it is already running — open the app tab
+> and press **Get Ratings**. A full 36-entity run makes 252 requests to seven
+> external websites and takes several minutes, so filtering to one or two
+> entities first gives a quicker result.
+
 # Rating Watchlist
 
 Collects the **latest credit rating** for a fixed list of entities from **seven
